@@ -1,0 +1,409 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1B3A2D;
+  margin: 0;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #2C4C3B;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+  color: #fff;
+}
+
+.input-tanggal {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #333;
+}
+
+.btn-secondary {
+  background-color: #D98A8A;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: #c76e6e;
+}
+
+.btn-logout {
+  background-color: #D98A8A;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.btn-logout:hover {
+  background-color: red;
+}
+
+.navbar-center {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: white;
+}
+
+.filter-bar {
+  text-align: center;
+  background-color: #D98A8A;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.table-container {
+  max-width: 900px;
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f3f3f3;
+}
+
+.add-btn {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.add-btn button {
+  font-size: 18px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background-color: #D98A8A;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  margin-right: 5px;
+}
+
+.btn-edit:hover {
+  background-color: #c76e6e;
+}
+
+.btn-hapus {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  margin-left: 5px;
+}
+
+.btn-hapus:hover {
+  background-color: #c82333;
+}
+
+.input-tanggal {
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.dropdown-custom {
+  display: none;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 150px;
+  z-index: 999;
+}
+
+.dropdown-custom li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-custom li:hover {
+  background-color: #eee;
+}
+
+.label-bulan {
+  background-color: #d98c8c;
+  color: white;
+  padding: 8px 12px;
+  margin-left: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 600px;
+  max-width: 90%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  color: #333;
+}
+
+.modal-content h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #D98A8A;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Form layout 2 kolom */
+.modal-form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-form-group label {
+  width: 120px;
+  font-weight: bold;
+  color: #1B3A2D;
+}
+
+.modal-form-group input,
+.modal-form-group select,
+.modal-form-group textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Tombol bawah modal */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#modalForm {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.3s ease;
+  display: none;
+}
+
+#modalForm.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.btn-back {
+  background-color: #D98A8A;
+  color: white;
+}
+
+.btn-back:hover {
+  background-color: #c76e6e;
+}
+
+.btn-submit {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #218838;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #888;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #1B3A2D;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 1s ease 2s forwards;
+}
+
+.welcome-message {
+  font-size: 2rem;
+  text-align: center;
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.goodbye-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #1B3A2D;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-size: 2rem;
+  animation: fadeInOut 2.5s forwards;
+}
+
+.goodbye-message {
+  animation: popUp 0.5s ease-in-out;
+  text-align: center;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

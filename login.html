@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - KasNote</title>
+  <link rel="stylesheet" href="./css/login.css" />
+</head>
+
+<body>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h1>KasNote</h1>
+      <p class="subtitle">Masuk untuk mengelola keuanganmu</p>
+
+      <div class="error-message" id="error"></div>
+
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <button onclick="login()">Login</button>
+      <p class="register-text">
+        Belum punya akun?
+        <a href="register.html">Daftar sekarang</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      })
+        .then(res => {
+          if (!res.ok) throw new Error('Login gagal');
+          return res.json();
+        })
+        .then(data => {
+          localStorage.setItem('userId', data.userId);
+          localStorage.setItem('username', data.username);
+          window.location.href = 'index.html';
+        })
+        .catch(() => {
+          document.getElementById('error').textContent = 'Username atau password salah!';
+        });
+    }
+  </script>
+</body>
+
+</html>

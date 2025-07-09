@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Strategi Investasi</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="back"><a href="index.html"><i data-feather="chevron-left"></i></a></div>
+        <h1>Strategi Investasimu</h1>
+    </div>
+
+    <div class="hasil-box">
+        <div class="notif-box" id="notif">
+            <p>Loading...</p>
+        </div>
+
+        <div class="data-ringkasan">
+            <p><strong>Total uang yang kamu butuhkan:</strong></p>
+            <h2 id="target-uang"></h2>
+        </div>
+
+        <div class="strategi">
+            <ul>
+                <li>💼 Uangmu saat ini: <span id="uang-sekarang"></span></li>
+                <li>💰 Investasi / bulan: <span id="investasi-bulanan"></span></li>
+                <li>📈 Return tahunan: <span id="return"></span></li>
+                <li>⏳ Lama investasi: <span id="tahun-investasi"></span></li>
+            </ul>
+
+            <hr>
+
+            <h3>Hasil Investasi:</h3>
+            <p><strong id="hasil-investasi"></strong></p>
+            <p id="kekurangan"></p>
+        </div>
+
+        <button id="lihat-rekomendasi" class="submit-btn" style="margin-top: 20px;">
+            Lihat Rekomendasi
+        </button>
+
+        <div id="popup-rekomendasi" class="popup-modal">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <h3>💡 Rekomendasi untuk Capai Target</h3>
+                <div class="popup-box" id="popup-isi"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        feather.replace();
+        // Ambil data dari localStorage
+        const uangTarget = parseInt(localStorage.getItem("targetUang")) || 0;
+        const tahun = parseInt(localStorage.getItem("targetTahun")) || 0;
+        const uangAwal = parseInt(localStorage.getItem("uangSekarang")) || 0;
+        const investasiBulanan = parseInt(localStorage.getItem("investasiBulanan")) || 0;
+        const returnTahunan = parseFloat(localStorage.getItem("returnTahunan")) || 0;
+
+        // Hitung nilai akhir
+        const r = returnTahunan / 100;
+        const n = tahun;
+        const pmt = investasiBulanan * 12;
+        const fv = uangAwal * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
+
+        // Update ke halaman
+        document.getElementById("target-uang").innerText = `Rp${uangTarget.toLocaleString("id-ID")}`;
+        document.getElementById("uang-sekarang").innerText = `Rp${uangAwal.toLocaleString("id-ID")}`;
+        document.getElementById("investasi-bulanan").innerText = `Rp${investasiBulanan.toLocaleString("id-ID")}`;
+        document.getElementById("return").innerText = `${returnTahunan}% / tahun`;
+        document.getElementById("tahun-investasi").innerText = `${tahun} tahun`;
+        document.getElementById("hasil-investasi").innerText = `Rp${Math.round(fv).toLocaleString("id-ID")}`;
+
+        const notif = document.getElementById("notif");
+        if (fv >= uangTarget) {
+            notif.innerHTML = `<div class="notif-sukses">Strategimu cocok untuk mencapai mimpi kamu 🎉</div>`;
+        } else {
+            notif.innerHTML = `<div class="notif-gagal">Strategimu <strong>belum cocok</strong> untuk mencapai mimpi kamu 😢</div>`;
+            const kurang = uangTarget - fv;
+            document.getElementById("kekurangan").innerText = `Kurang Rp${Math.round(kurang).toLocaleString("id-ID")}`;
+        }
+
+        // ini buat pop up rekomendasi kalo strategi tidak sesuai
+        document.addEventListener("DOMContentLoaded", () => {
+            feather.replace();
+
+            const uangTarget = parseInt(localStorage.getItem("targetUang")) || 0;
+            const tahun = parseInt(localStorage.getItem("targetTahun")) || 0;
+            const uangAwal = parseInt(localStorage.getItem("uangSekarang")) || 0;
+            const investasiBulanan = parseInt(localStorage.getItem("investasiBulanan")) || 0;
+            const returnTahunan = parseFloat(localStorage.getItem("returnTahunan")) || 0;
+
+            const r = returnTahunan / 100;
+            const n = tahun;
+            const pmt = investasiBulanan * 12;
+            const fv = uangAwal * Math.pow(1 + r, n) + pmt * ((Math.pow(1 + r, n) - 1) / r);
+
+            document.getElementById("target-uang").innerText = `Rp${uangTarget.toLocaleString("id-ID")}`;
+            document.getElementById("uang-sekarang").innerText = `Rp${uangAwal.toLocaleString("id-ID")}`;
+            document.getElementById("investasi-bulanan").innerText = `Rp${investasiBulanan.toLocaleString("id-ID")}`;
+            document.getElementById("return").innerText = `${returnTahunan}% / tahun`;
+            document.getElementById("tahun-investasi").innerText = `${tahun} tahun`;
+            document.getElementById("hasil-investasi").innerText = `Rp${Math.round(fv).toLocaleString("id-ID")}`;
+
+            const notif = document.getElementById("notif");
+
+            if (fv >= uangTarget) {
+                notif.innerHTML = `<div class="notif-sukses">Strategimu cocok untuk mencapai mimpi kamu 🎉</div>`;
+                document.getElementById("lihat-rekomendasi").style.display = "none"; // sembunyikan tombol jika strategi berhasil
+            } else {
+                notif.innerHTML = `<div class="notif-gagal">Strategimu <strong>belum cocok</strong> untuk mencapai mimpi kamu 😢</div>`;
+                const kurang = uangTarget - fv;
+                document.getElementById("kekurangan").innerText = `Kurang Rp${Math.round(kurang).toLocaleString("id-ID")}`;
+
+                // Tampilkan tombol rekomendasi
+                document.getElementById("lihat-rekomendasi").style.display = "inline-block";
+
+                // Isi popup saat tombol diklik
+                document.getElementById("lihat-rekomendasi").addEventListener("click", () => {
+                    const pmtBaru = (uangTarget - uangAwal * Math.pow(1 + r, n)) * (r / (Math.pow(1 + r, n) - 1)) / 12;
+                    const tahunBaru = Math.ceil(Math.log((r * uangTarget + pmt) / (r * uangAwal + pmt)) / Math.log(1 + r));
+
+                    document.getElementById("popup-isi").innerHTML = `
+                <p><strong>📌 Rekomendasi Nominal:</strong><br>
+                Disarankan investasi: <span style="color: #00ffc4;">Rp${Math.ceil(pmtBaru).toLocaleString("id-ID")}/bulan</span></p>
+                <p><strong>📌 Rekomendasi Durasi:</strong><br>
+                Dengan strategi sekarang, butuh waktu sekitar <span style="color: #ffd700;">${tahunBaru} tahun</span></p>
+            `;
+
+                    document.getElementById("popup-rekomendasi").style.display = "flex";
+                });
+            }
+
+            // Tutup popup
+            const closeBtn = document.querySelector(".close-popup");
+            if (closeBtn) {
+                closeBtn.addEventListener("click", () => {
+                    document.getElementById("popup-rekomendasi").style.display = "none";
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>

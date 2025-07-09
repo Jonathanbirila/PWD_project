@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Akun - KasNote</title>
+  <link rel="stylesheet" href="./css/login.css" />
+</head>
+
+<body>
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h1>Daftar Akun</h1>
+      <p class="subtitle">Buat akun untuk mulai mencatat keuanganmu</p>
+
+      <div class="error-message" id="error"></div>
+
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <button onclick="register()">Daftar</button>
+
+      <p class="register-text">
+        Sudah punya akun? <a href="login.html">Login di sini</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function register() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        document.getElementById('error').textContent = 'Harap isi semua field!';
+        return;
+      }
+
+      fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      })
+        .then(res => {
+          if (!res.ok) return res.json().then(data => { throw new Error(data.error); });
+          return res.json();
+        })
+        .then(data => {
+          alert("Registrasi berhasil! Silakan login.");
+          window.location.href = 'login.html';
+        })
+        .catch(err => {
+          document.getElementById('error').textContent = err.message;
+        });
+    }
+  </script>
+</body>
+
+</html>
