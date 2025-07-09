@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: white;
+}
+
+/* BAGIAN BUTTON SWITCH PENGELUARAN DAN PEMASUKAN */
+.switch-tab {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+.tab {
+  padding: 20px 50px;
+  border: none;
+}
+
+.tab.active1 {
+  background: white;  
+  color: #ff6961;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0px 4px 0px rgba(0,0,0,0.1);
+}
+
+.tab.active2 {
+  background: white;  
+  color: #118c4f;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0px 4px 0px rgba(0,0,0,0.1);
+}
+
+.form-pemasukan {
+  display: none;
+}
+
+
+
+
+/* BAGIAN FORM INPUT DATA */
+.form-tabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.finance1 {
+  justify-content: center;
+  background: white;
+  padding: 10px 70px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  max-width: 1000px;
+  margin: auto;
+}
+
+.finance1-pemasukan {
+  background: white;
+}
+
+.finance1 h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #118c4f;
+  font-size: 1.7rem;
+}
+
+.form-pengeluaran h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff6961;
+  font-size: 1.7rem;
+}
+
+
+.pengeluaran-group {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.pengeluaran-group label {
+  width: 10%;
+  font-weight: bold;
+  margin-top: 22px;
+}
+
+.pemasukan-group {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.pemasukan-group label {
+  width: 10%;
+  font-weight: bold;
+  margin-top: 22px;
+}
+
+.pengeluaran-group input,
+.pengeluaran-group select,
+.pengeluaran-group textarea {
+  width: 70%;
+  box-sizing: border-box;
+  border: 1px solid whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  opacity: 0.5;
+}
+
+.pemasukan-group input,
+.pemasukan-group select,
+.pemasukan-group textarea {
+  width: 70%;
+  box-sizing: border-box;
+  border: 1px solid whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  opacity: 0.5;
+}
+
+
+.but-group1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.but-group2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.but-group1 button {
+  padding: 10px 20px;
+  border: none;
+  background: #ff6961;
+  margin-top: 15px;
+  border-radius: 10px;
+  color: white;
+  transition: 0.3s;
+}
+
+.but-group1 button:hover {
+  background: white;
+  color: #ff6961;
+}
+
+.but-group2 button {
+  padding: 10px 20px;
+  border: none;
+  background: #118c4f;
+  margin-top: 15px;
+  border-radius: 10px;
+  color: white;
+  transition: 0.3s;
+}
+
+.but-group2 button:hover {
+  background: white;
+  color: #118c4f;
+}
+
+
+@media (max-width: 768px) {
+  .pengeluaran-group label {
+    width: 30%;
+  }
+
+  .pemasukan-group label {
+    width: 30%;
+  }
+
+  .form-tabel {
+    width: 100%;
+  }
+
+  .finance1 h3 {
+    font-size: 1.5rem;
+  }
+
+  .switch-tab {
+    margin-left: auto;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+/* BAGIAN TAMPILAN DATA */
+.output-data-box {
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  background: white;
+  padding: 10px 70px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+table th {
+  padding: 12px;
+  text-align: center;
+}
+
+.tabel-data1 th {
+  border-bottom: 2px solid #ff6961;
+}
+
+.tabel-data1 h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ff6961;
+  font-size: 1.7rem;
+}
+
+.tabel-data2 th {
+  border-bottom: 2px solid #118c4f;
+}
+
+.tabel-data2 h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #118c4f;
+  font-size: 1.7rem;
+}
+ 

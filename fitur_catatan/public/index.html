@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="switch-tab">
+        <button class="tab active1" id="btn-pengeluaran">Pengeluaran</button>
+        <button class="tab active2" id="btn-pemasukan">Pemasukan</button>
+    </div>
+
+    <!-- FORM PENGISISAN DATA PENGELUARAN -->
+    <div class="form-tabel form-pengeluaran" id="form-pengeluaran">
+        <div class="finance1 finance1-pengeluaran">
+
+             <!-- tombol back tapi kagak jadi -->
+            <!-- <a href="#" class="btn btn-outline-success btn-back">
+                <i class="bi bi-arrow-left-square-fill"></i></a> -->
+                
+            <form id="f-pengeluaran" action="/submit" method="POST">
+                <input type="hidden" name="tipe" value="pengeluaran" />
+                <h3>Catat Pengeluaran</h3>
+                <div class="pengeluaran-group" id="tanggal-pengeluaran"> 
+                    <label>Tanggal</label>
+                    <input type="date" id="tanggal1" name="tanggal"/>
+                </div>
+        
+                <br>
+            
+                <div class="pengeluaran-group" id="kategori-pengeluaran"> 
+                    <label>Kategori</label>
+                    <select id="kategori1" name="kategori">
+                      <option selected disabled>Pilih Kategori</option>
+                      <option value="Makanan">Makanan</option>
+                      <option value="Barang">Barang</option>
+                    </select>
+                </div>
+                
+                <br>
+        
+                <div class="pengeluaran-group" id="jumlah-pengeluaran"> 
+                    <label>Jumlah</label>
+                    <input type="number" id="jumlah1" placeholder="Masukkan nominal" name="jumlah"/>
+                </div>
+                
+                <br>
+        
+                <div class="pengeluaran-group" id="keterangan-pengeluaran"> 
+                    <label>Keterangan</label>
+                    <textarea id="keterangan1" maxlength="150" name="keterangan"></textarea>
+                </div>
+    
+                <div class="but-group1">
+                    <button class="back">Back</button>
+                    <button type="submit" class="submit" id="submit1">Tambahkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FORM PENGISISAN DATA PEMASUKAN -->
+    <div class="form-tabel form-pemasukan" id="form-pemasukan">
+        <div class="finance1 finance1-pemasukan">
+
+            <!-- tombol back tapi kagak jadi -->
+            <!-- <a href="#" class="btn btn-outline-success btn-back">
+                <i class="bi bi-arrow-left-square-fill"></i></a> -->
+    
+            <form id="f-pemasukan" action="/submit" method="POST">
+                <input type="hidden" name="tipe" value="pemasukan" />
+                <h3>Catat Pemasukan</h3>
+                <div class="pemasukan-group" id="tanggal-pemasukan"> 
+                    <label>Tanggal</label>
+                    <input type="date" id="tanggal2" name="tanggal"/>
+                </div>
+        
+                <br>
+            
+                <div class="pemasukan-group" id="kategori-pemasukan"> 
+                    <label>Kategori</label>
+                    <select id="kategori2" name="kategori">
+                      <option selected disabled>Pilih Kategori</option>
+                      <option value="Makanan">Makanan</option>
+                      <option value="Barang">Barang</option>
+                    </select>
+                </div>
+                
+                <br>
+        
+                <div class="pemasukan-group" id="jumlah-pemasukan"> 
+                    <label>Jumlah</label>
+                    <input type="number" id="jumlah2" placeholder="Masukkan nominal" name="jumlah"/>
+                </div>
+                
+                <br>
+        
+                <div class="pemasukan-group" id="keterangan-pemasukan"> 
+                    <label>Keterangan</label>
+                    <textarea id="keterangan2" maxlength="150" name="keterangan"></textarea>
+                </div>
+    
+                <div class="but-group2">
+                    <button class="back">Back</button>
+                    <button type="submit" class="submit" id="submit2">Tambahkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- TAMPIL DATA PENGELUARAN -->
+     <div class="output-data">
+        <div class="output-data-box">
+
+            <!-- Tampilkan Data Pengeluaran -->
+            <div id="tabel-pengeluaran" class="tabel-data1">
+            <h3>Daftar Pengeluaran Anda</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Kategori</th>
+                    <th>Jumlah</th>
+                    <th>Keterangan</th>
+                </tr>
+                </thead>
+                <tbody id="isi-tabel-pengeluaran">
+                <!-- Baris data akan ditambahkan di sini via JS -->
+                </tbody>
+            </table>
+            </div>
+
+            <!-- Tampilan Tabel Data Pemasukan -->
+            <div id="tabel-pemasukan" class="tabel-data2" style="display: none;">
+             <h3>Daftar Pemasukan Anda</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Kategori</th>
+                    <th>Jumlah</th>
+                    <th>Keterangan</th>
+                </tr>
+                </thead>
+                <tbody id="isi-tabel-pemasukan">
+                <!-- Baris data akan ditambahkan di sini via JS -->
+                </tbody>
+            </table>
+            </div>
+
+        </div>
+     </div>
+
+    <script src="javascript.js" defer></script>
+</body>
+</html>

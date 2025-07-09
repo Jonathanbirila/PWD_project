@@ -1,0 +1,20 @@
+{
+  "name": "kelompok-pwd-project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "serv": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
