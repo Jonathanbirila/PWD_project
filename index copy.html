@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator keuangan</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="back"><i data-feather="chevron-left"></i></div>
+        <h1>Kalkulator Investasi</h1>
+    </div>
+
+    <div class="header">
+        <div class="quotes">
+            <h3><span>❝</span> Setiap mimpi besar dimulai dengan langkah kecil dan perencanaan yang tepat.</h3>
+        </div>
+        <div class="tips">
+            <p>💡Tips singkat dalam berinvestasi</p>
+            <ol>
+                <li>Jangan investasi pakai uang darurat, ya!</li>
+                <li>Carilah instrumen investasi yang aman</li>
+                <li>Investasi = maraton, bukan sprint. Sabar & konsisten kuncinya.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h1 class="mesin-ketik">Hai, ayo isi strategimu dibawah ini!</h1>
+        <br>
+        <div class="form-step show" id="step-1">
+            <label for="target-uang">Jumlah uang yang ingin anda capai</label>
+            <div class="input-wrapper">
+                <span class="mata-uang">Rp</span>
+                <input type="text" class="format-rupiah" id="target-uang" placeholder="Masukkan jumlah" />
+                <i data-feather="help-circle"></i>
+            </div>
+        </div>
+
+        <div class="form-step" id="step-2" style="display: none;">
+            <label for="target-tahun">Jumlah uang yang ingin anda capai</label>
+            <div class="input-wrapper spesific">
+                <input type="number" id="target-tahun" placeholder="Berapa lama" />
+                <span class="mata-uang">Tahun lagi</span>
+                <i data-feather="help-circle"></i>
+            </div>
+        </div>
+
+        <div class="form-step" id="step-3" style="display: none;">
+            <label for="uang-yang-dimiliki">Uang yang kamu miliki saat ini sebesar </label>
+            <div class="input-wrapper">
+                <span class="mata-uang">Rp</span>
+                <input type="text" class="format-rupiah" id="uang-yang-dimiliki" placeholder="Masukkan jumlah" />
+                <i data-feather="help-circle"></i>
+            </div>
+        </div>
+
+        <div class="form-step" id="step-4" style="display: none;">
+            <label for="waktu-investasi">Anda akan menginvestasikan uang anda setiap</label>
+            <div class="toggle-wrapper">
+                <button class="toggle-button" id="tahun">Setiap Tahun</button>
+                <button class="toggle-button active" id="bulan">Setiap Bulan</button>
+            </div>
+        </div>
+
+        <div class="form-step" id="step-5" style="display: none;">
+            <label for="investasi-per-bulan">Uang yang anda investasikan setiap <span>bulan</span> </label>
+            <div class="input-wrapper">
+                <span class="mata-uang">Rp</span>
+                <input type="text" class="format-rupiah" id="investasi-per-bulan" placeholder="Masukkan jumlah" />
+                <i data-feather="help-circle"></i>
+            </div>
+        </div>
+
+        <div class="form-step" id="step-6" style="display: none;">
+            <label for="return-investasi">Anda akan investasi pada produk yang returnnya berapa</label>
+            <div class="input-wrapper spesific">
+                <input type="number" id="return-investasi" placeholder="Masukkan persentase" />
+                <span class="mata-uang">%/Tahun</span>
+                <i data-feather="help-circle"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-step" id="step-7" style="display: none;">
+        <div class="submit">
+            <p>hore, anda sudah 1 langkah menuju mimpi anda</p>
+            <h3>Ayo lihat hasil strategimu</h3>
+            <button class="submit-btn"><span>cek</span><i data-feather="arrow-right-circle"></i></button>
+        </div>
+    </div>
+
+    <div id="popup-rekomendasi" class="popup-modal">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <h3>💡 Rekomendasi untuk Capai Target</h3>
+            <div class="popup-box" id="popup-isi"></div>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
