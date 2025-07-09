@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyTrack - Catatan Keuangan</title>
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<body>
+    <div class="navbar">
+
+        <div id="welcomeOverlay" class="welcome-overlay">
+            <div class="welcome-message">
+                <h2>Selamat Datang, <span id="welcomeName"></span>!</h2>
+            </div>
+        </div>
+
+        <div class="logo">
+            <a href="../index.html">KasNote</a>
+        </div>
+        <div class="navbar-center">
+            <span id="currentMonthYear" class="input-tanggal"></span>
+            <button class="btn-secondary" onclick="unduhPDF()"><i class="fas fa-download"></i> Unduh PDF</button>
+            <select id="filterMonth" class="btn-secondary" onchange="ubahBulan()">
+                <!-- akan diisi pakai JavaScript -->
+            </select>
+            <a href="/kalkulator/index.html" class="btn-secondary"><i class="fas fa-calculator"></i> Kalkulator</a>
+        </div>
+
+        <div class="navbar-right">
+            Welcome, <span id="userDisplay"></span>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </div>
+
+    <div class="filter-bar" id="saldo-bar">
+        <strong>Total Pemasukan:</strong> Rp <span id="total-pemasukan">0</span> |
+        <strong>Total Pengeluaran:</strong> Rp <span id="total-pengeluaran">0</span> |
+        <strong>Saldo:</strong> Rp <span id="total-saldo">0</span>
+    </div>
+
+    <div class="table-container" id="pdf-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Keterangan</th>
+                    <th>Kategori</th>
+                    <th>Jumlah</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="data-body"></tbody>
+        </table>
+        <div class="add-btn">
+            <button onclick="openModal()">+ Tambah</button>
+        </div>
+    </div>
+
+    <div class="modal" id="modalForm">
+        <div class="modal-content">
+            <span class="close" onclick="tutupModal()">&times;</span>
+            <h3>Catat Transaksi</h3>
+
+            <div class="modal-form-group">
+                <label for="tanggal">Tanggal</label>
+                <input type="date" id="tanggal" />
+            </div>
+
+            <div class="modal-form-group">
+                <label for="kategori">Kategori</label>
+                <select id="kategori">
+                    <option value="">Pilih</option>
+                    <option value="Pemasukan">Pemasukan</option>
+                    <option value="Pengeluaran">Pengeluaran</option>
+                </select>
+            </div>
+
+            <div class="modal-form-group">
+                <label for="jumlah">Jumlah</label>
+                <input type="number" id="jumlah" />
+            </div>
+
+            <div class="modal-form-group">
+                <label for="keterangan">Keterangan</label>
+                <textarea id="keterangan" rows="2"></textarea>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn-back" onclick="tutupModal()">Back</button>
+                <button class="btn-submit" onclick="simpanData()">Tambahkan</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+
+    <div id="goodbyeOverlay" class="goodbye-overlay" style="display: none;">
+        <div class="goodbye-message">
+            <h2>Sampai jumpa, <span id="goodbyeName"></span> 👋</h2>
+        </div>
+    </div>
+</body>
+
+</html>
